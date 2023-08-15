@@ -54,19 +54,19 @@
 //     console.log(error)
 // })
 
-let firstNum = 3 
-let secondNum = 7 
+// let firstNum = 3 
+// let secondNum = 7 
 
-function addNumbers(first, second){
-    let numbersSum = first + second 
-    new Promise((resolve, reject)=>{
-        if(numbersSum){
-            resolve(numbersSum)
-        }reject(" Wrong arguments")
-    })
-}
-addNumbers(firstNum, secondNum).then((succes)=>{
-  console.log(succes)
-}).catch((error)=>{
-    console.log(error)
-})
+// function addNumbers(first, second){
+//     let numbersSum = first + second 
+//     new Promise((resolve, reject)=>{
+//         if(numbersSum){
+//             resolve(numbersSum)
+//         }reject(" Wrong arguments")
+//     })
+// }
+// addNumbers(firstNum, secondNum).then((succes)=>{
+//   console.log(succes)
+// }).catch((error)=>{
+//     console.log(error)
+// })
