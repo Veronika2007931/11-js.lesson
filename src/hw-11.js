@@ -32,8 +32,7 @@
  
 // ];
  
- 
-// function toggleUserState(allUsers, userName){
+//  function toggleUserState(allUsers, userName){
  
 // const updatedUsers = allUsers.map(user =>{
 //     user.name === userName ? { ...user, active: !user.active } : user
@@ -43,12 +42,8 @@
 //  resolve(console.table(updatedUsers))
 
 // })
- 
- 
 // };
 
-
- 
 // toggleUserState(users, 'Mango').then((succes)=>{
 //     console.log(succes)
 // })
@@ -60,90 +55,89 @@
 // Перепишіть функцію makeTransaction()так, щоб вона не використовувала callback-функції onSuccessі onError, 
 // а прийняла весь один параметр transactionі повернула проміс.
  
-const randomIntegerFromInterval = (min, max) => {
+function randomIntegerFromInterval(min, max){
  
 return Math.floor(Math.random() * (max - min + 1) + min);
  
 };
  
-// Якщо зверху це не функція то чому ми знизу задаємо їй параметри???? 
+// Якщо randomIntegerFromInterval це не функція то чому ми знизу задаємо їй параметри???? 
 
-const makeTransaction = (транзакція, onSuccess, onError) => {
+function makeTransaction(transaction, onSuccess, onError){
  const delay = randomIntegerFromInterval(200, 500);
  
  setTimeout(() => {
- const canProcess = Math.random() > 0,3;
+ const canProcess = Math.random() > 0.3;
  if (canProcess) {
+ onSuccess(transaction.id, delay);
  
-onSuccess(transaction.id, затримка);
- 
-} ще {
+ }else{
  onError(transaction.id);
  
-}}, затримка);
+}}, delay);
  
-};
- 
- 
-const logSuccess = (id, time) => {
- 
-console.log(`Транзакція ${id} оброблена за ${time}ms`);
- 
-};
- 
- 
+
+return new Promise((resolve, reject)=>{
+  const logSuccess = (id, time) => {
+    resolve(console.log(`Транзакція ${id} оброблена за ${time}ms`))
+    };
+    
 const logError = id => {
- 
-console.warn(`Помилка обробки транзакції ${id}. Спробуйте пізніше.`);
- 
+       reject(console.warn(`Помилка обробки транзакції ${id}. Спробуйте пізніше.`))
+        };
+        
+
+})
 };
  
+
+
  
-/*
+// /*
  
-* Працює так
+// * Працює так
  
-*/
+// */
  
-makeTransaction({ id: 70, сума: 150 }, logSuccess, logError);
+// makeTransaction({ id: 70, сума: 150 }, logSuccess, logError);
  
-makeTransaction({ id: 71, сума: 230 }, logSuccess, logError);
+// makeTransaction({ id: 71, сума: 230 }, logSuccess, logError);
  
-makeTransaction({ id: 72, сума: 75 }, logSuccess, logError);
+// makeTransaction({ id: 72, сума: 75 }, logSuccess, logError);
  
-makeTransaction({ id: 73, сума: 100 }, logSuccess, logError);
+// makeTransaction({ id: 73, сума: 100 }, logSuccess, logError);
  
-/*
+// /*
  
-* Повинно працювати так
+// * Повинно працювати так
  
-*/
+// */
  
-makeTransaction({ id: 70, сума: 150 })
+// makeTransaction({ id: 70, сума: 150 })
  
-.then(logSuccess)
+// .then(logSuccess)
  
-.catch(logError);
- 
- 
-makeTransaction({ id: 71, сума: 230 })
- 
-.then(logSuccess)
- 
-.catch(logError);
+// .catch(logError);
  
  
-makeTransaction({ id: 72, сума: 75 })
+// makeTransaction({ id: 71, сума: 230 })
  
-.then(logSuccess)
+// .then(logSuccess)
  
-.catch(logError);
+// .catch(logError);
  
  
-makeTransaction({ id: 73, сума: 100 })
+// makeTransaction({ id: 72, сума: 75 })
  
-.then(logSuccess)
+// .then(logSuccess)
  
-.catch(logError);
+// .catch(logError);
+ 
+ 
+// makeTransaction({ id: 73, сума: 100 })
+ 
+// .then(logSuccess)
+ 
+// .catch(logError);
 
 
